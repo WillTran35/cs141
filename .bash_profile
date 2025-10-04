@@ -57,3 +57,4 @@ alias mv="/bin/mv -i"
 if test -f ~/.bashrc ; then
 	. ~/.bashrc 
 fi
+source ~klefstad/.bash_profile_fix
