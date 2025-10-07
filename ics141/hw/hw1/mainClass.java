@@ -43,7 +43,7 @@ class Circle extends Shape {
     void print() {
         // FirstTriangle(5, 5) : 12.5
         String name = this.get_name();
-        String result = String.format("%s(%d) : %f:.2f", name, radius, area());
+        String result = String.format("%s(%d) : %.2f", name, radius, area());
         System.out.println(result);
     }
 
@@ -70,7 +70,7 @@ class Square extends Shape {
     @Override
     void print() {
         String name = this.get_name();
-        String result = String.format("%s(%d) : %f:.2f", name, length, area());
+        String result = String.format("%s(%d) : %.2f", name, length, area());
         System.out.println(result);
     }
 
@@ -100,7 +100,7 @@ class Rectangle extends Square{
     @Override
     void print() {
         String name = this.get_name();
-        String result = String.format("%s(%d, %d) : %f:.2f", name, this.get_length(), this.width, area());
+        String result = String.format("%s(%d, %d) : %.2f", name, this.get_length(), this.width, area());
         System.out.println(result);
     }
 
@@ -130,7 +130,7 @@ class Triangle extends Shape {
     @Override
     void print() {
         String name = this.get_name();
-        String result = String.format("%s(%d, %d) : %f:.2f", name, height, length, area());
+        String result = String.format("%s(%d, %d) : %.2f", name, height, length, area());
         System.out.println(result);
     }
 
@@ -157,7 +157,7 @@ class Picture {
 
     void printAll(){
         while (head != null){
-            System.out.print("hi");
+            // System.out.print("hi");
             head.info.print();
             head = head.next;
         }
