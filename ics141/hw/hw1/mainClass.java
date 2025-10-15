@@ -54,7 +54,11 @@ class Circle extends Shape {
 
     @Override
     void draw() {
-        System.out.println("*circle*");
+        System.out.println("   ***   ");
+        System.out.println(" *     * ");
+        System.out.println("*       *");
+        System.out.println(" *     * ");
+        System.out.println("   ***   ");
     }
 }
 
@@ -81,20 +85,25 @@ class Square extends Shape {
 
     @Override
     void draw() {
-        System.out.println("*square*");
+        System.out.println("*****");
+        System.out.println("*****");
+        System.out.println("*****");
+        System.out.println("*****");
+        System.out.println("*****");
     }
 
-    int get_length(){
-        return this.length; 
+    int get_length() {
+        return this.length;
     }
 }
 
-class Rectangle extends Square{
-    private int width ;
+class Rectangle extends Square {
+
+    private int width;
 
     public Rectangle(String name, int length, int width) {
-        super(name,length);
-        this.width = width; 
+        super(name, length);
+        this.width = width;
     }
 
     @Override
@@ -111,10 +120,15 @@ class Rectangle extends Square{
 
     @Override
     void draw() {
-        System.out.println("*rectangle*");
+        System.out.println("*********");
+        System.out.println("*       *");
+        System.out.println("*       *");
+        System.out.println("*       *");
+        System.out.println("*********");
     }
-    
+
 }
+
 class Triangle extends Shape {
 
     private int height;
@@ -141,72 +155,88 @@ class Triangle extends Shape {
 
     @Override
     void draw() {
-        System.out.println("*triangle*");
+        System.out.println("    *    ");
+        System.out.println("   ***   ");
+        System.out.println("  *****  ");
+        System.out.println(" ******* ");
+        System.out.println("*********");
     }
 
 }
 
 class Picture {
-    ListNode head; 
 
-    Picture(){
-        this.head = null; 
+    ListNode head;
+
+    Picture() {
+        this.head = null;
     }
 
-    void add(Shape sh){ head = new ListNode(sh, head); }
+    void add(Shape sh) {
+        head = new ListNode(sh, head);
+    }
 
-    void printAll(){
-        while (head != null){
+    void printAll() {
+        ListNode copy = head;
+        while (copy != null) {
             // System.out.print("hi");
-            head.info.print();
-            head = head.next;
+            copy.info.print();
+            copy = copy.next;
         }
     }
 
-    void drawAll(){
-        while (head != null){
-            head.info.draw();
-            head = head.next;
+    void drawAll() {
+        ListNode copy = head;
+        while (copy != null) {
+            copy.info.draw();
+            copy = copy.next;
         }
     }
 
-    double totalArea(){
-        double sum = 0; 
+    double totalArea() {
+        double sum = 0;
+        ListNode copy = head;
 
-        while (head != null){
-            sum += head.info.area();
-            head = head.next; 
+        while (copy != null) {
+            sum += copy.info.area();
+            copy = copy.next;
         }
-        return sum; 
+        return sum;
     }
 }
 
-class ListNode{
-    Shape info;
-    ListNode next; 
-    
-    ListNode(Shape info, ListNode next){
-        this.info = info; 
-        this.next = next; 
-    }
+class ListNode {
 
+    Shape info;
+    ListNode next;
+
+    ListNode(Shape info, ListNode next) {
+        this.info = info;
+        this.next = next;
+    }
 
 }
 
 public class mainClass {
+
     public static void main(String[] args) {
+        int arg1 = Integer.parseInt(args[0]);
+        int arg2 = Integer.parseInt(args[1]);
+
         Picture pic = new Picture();
-        Triangle t1 = new Triangle("FirstTriangle", 5, 5);
-        Triangle t2 = new Triangle("SecondTriangle", 4, 4);
+        Triangle t1 = new Triangle("FirstTriangle", arg1, arg2);
+        // System.out.println(t1.area());
+        ;
+        Triangle t2 = new Triangle("SecondTriangle", arg1 - 1, arg2 - 1);
 
-        Circle c1 = new Circle("FirstCircle", 5);
-        Circle c2 = new Circle("SecondCircle", 4);
+        Circle c1 = new Circle("FirstCircle", arg1);
+        Circle c2 = new Circle("SecondCircle", arg1 - 1);
 
-        Square s1 = new Square("FirstSquare", 5);
-        Square s2 = new Square("SecondSquare", 4);
+        Square s1 = new Square("FirstSquare", arg1);
+        Square s2 = new Square("SecondSquare", arg1 - 1);
 
-        Rectangle r1 = new Rectangle("FirstRectangle" , 5, 5);
-        Rectangle r2 = new Rectangle("SecondRectangle" , 4, 4);
+        Rectangle r1 = new Rectangle("FirstRectangle", arg1, arg2);
+        Rectangle r2 = new Rectangle("SecondRectangle", arg1-1, arg2-1);
 
         pic.add(t1);
         pic.add(t2);
@@ -219,6 +249,6 @@ public class mainClass {
 
         pic.printAll();
         pic.drawAll();
-        pic.totalArea();
+        System.out.println("Total : " + pic.totalArea());
     }
 }
