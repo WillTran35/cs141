@@ -162,7 +162,7 @@ VirtualTableEntry Rectangle_VTable[] = {
 
 Rectangle *Rectangle_Rectangle(Rectangle *_this, string name, int length, int width)
 {
-    Square_Square((Shape *)_this, name, length);
+    Square_Square((Square *)_this, name, length);
     _this->VPointer = Rectangle_VTable;
     _this->width = width;
     return _this;
@@ -206,4 +206,4 @@ Triangle *Triangle_Triangle(Triangle *_this, string name, int length, int height
 
 struct Picture
 {
-}
+};
