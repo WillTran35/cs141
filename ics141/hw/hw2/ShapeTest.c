@@ -84,9 +84,9 @@ VirtualTableEntry Circle_VTable[] = {
     {.void_method_print = (void_method_type)Circle_print},
     {.void_method_draw = (void_method_type)Circle_draw}};
 
-Circle *Circle(Circle *_this, string name, int radius)
+Circle *Circle_Circle(Circle *_this, string name, int radius)
 {
-    Shape_Shape((Circle *)_this, name);
+    Shape_Shape((Shape *)_this, name);
     _this->VPointer = Circle_VTable;
     _this->radius = radius;
     return _this;
@@ -126,7 +126,7 @@ VirtualTableEntry Square_VTable[] = {
 
 Square *Square_Square(Square *_this, string name, int length)
 {
-    Shape_Shape((Square *)_this, name);
+    Shape_Shape((Shape *)_this, name);
     _this->VPointer = Square_VTable;
     _this->length = length;
     return _this;
@@ -162,7 +162,7 @@ VirtualTableEntry Rectangle_VTable[] = {
 
 Rectangle *Rectangle_Rectangle(Rectangle *_this, string name, int length, int width)
 {
-    Square_Square((Square *)_this, name, length);
+    Square_Square((Shape *)_this, name, length);
     _this->VPointer = Rectangle_VTable;
     _this->width = width;
     return _this;
@@ -197,7 +197,7 @@ VirtualTableEntry Triangle_VTable[] = {
 
 Triangle *Triangle_Triangle(Triangle *_this, string name, int length, int height)
 {
-    Shape_Shape((Triangle *)_this, name);
+    Shape_Shape((Shape *)_this, name);
     _this->VPointer = Triangle_VTable;
     _this->length = length;
     _this->height = height;
