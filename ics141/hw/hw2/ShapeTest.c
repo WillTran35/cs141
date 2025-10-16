@@ -204,6 +204,41 @@ Triangle *Triangle_Triangle(Triangle *_this, string name, int length, int height
     return _this;
 }
 
-struct Picture
+void printAll(Shape *arr, int length)
 {
-};
+    for (int i = 0; i < length; i++)
+    {
+        arr[i]->VPointer[PRINT_INDEX].void_method(arr[i]);
+    }
+}
+
+void drawAll(Shape *arr, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        arr[i]->VPointer[DRAW_INDEX].void_method(arr[i]);
+    }
+}
+
+double totalArea(Shape *arr, int length)
+{
+    double result = 0;
+    for (int i = 0; i < length; i++)
+    {
+        result += arr[i]->VPointer[AREA_INDEX].double_method(arr[i]);
+    }
+    return result;
+}
+
+int main(int argc, char *argv[])
+{
+    int arg1 = atoi(argv[0]);
+    int arg2 = atoi(argv[1]);
+
+    Shape *arr[1];
+    arr[0] = (Shape *)Triangle_Triangle((Triangle *)malloc(sizeof(Triangle)), "First Triangle", arg1, arg2);
+
+    printAll(arr, 1);
+    drawAll(arr, 1);
+    cout << totalArea(arr, 1) << endl;
+}
